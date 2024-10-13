@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">فیلم تایم</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="version">نسخه</string>
+    <string name="register">ثبت نام</string>
+    <string name="name">نام</string>
+    <string name="email">ایمیل</string>
+    <string name="Password">رمز عبور</string>
+    <string name="please_fill_all_fields">لطفا تمام موارد را پر کنید</string>
+    <string name="success_msg">ثبت نام با موفقیت انجام شد</string>
+    <string name="email_is_not_valid">آدرس ایمیل معتبر نیست!</string>
+    <string name="films">فیلم های برتر</string>
+    <string name="show_more">مشاهده بیشتر</string>
+    <string name="show_all">مشاهده همه</string>
+    <string name="favorites">علاقه مندی ها</string>
+    <string name="Home">خانه</string>
+    <string name="categories">دسته بندی ها</string>
+    <string name="search">جستجو</string>
+</resources>

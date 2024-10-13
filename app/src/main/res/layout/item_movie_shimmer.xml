@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white2"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/movieCard"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_height="@dimen/_150mdp"
+            android:layout_margin="@dimen/_8mdp"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_3mdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <!--Poster-->
+            <View
+                android:id="@+id/item_movie_img"
+                android:background="@color/shimmerColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Title-->
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15mdp"
+            android:background="@color/shimmerColor"
+            app:layout_constraintEnd_toStartOf="@+id/movieCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Duration-->
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="0dp"
+           android:layout_marginTop="@dimen/_10mdp"
+            android:layout_height="wrap_content"
+            android:background="@color/shimmerColor"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+        <!--Category-->
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10mdp"
+
+             android:background="@color/shimmerColor"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtDuration"
+          />
+
+        <!--Views-->
+        <TextView
+            android:id="@+id/txtViews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10mdp"
+
+            android:background="@color/shimmerColor"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtCategory"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Line-->
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1mdp"
+        android:layout_margin="@dimen/_5mdp"
+        android:background="@color/shimmerColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/consMovie" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

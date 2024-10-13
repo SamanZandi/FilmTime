@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consLayImg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200mdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="@dimen/_15mdp"
+            app:cardElevation="@dimen/_5mdp">
+            <!--Cover-->
+            <ImageView
+                android:id="@+id/imgMovie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+               android:requiresFadingEdge="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_slider_shadow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--Info-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consLayInfo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30mdp"
+        android:layout_margin="@dimen/_20mdp"
+        android:background="@drawable/bg_white"
+        app:layout_constraintBottom_toBottomOf="@id/consLayImg">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5mdp"
+            android:drawableEnd="@drawable/baseline_movies"
+            android:drawablePadding="@dimen/_3mdp"
+            android:gravity="center_vertical"
+            style="@style/TextViewLightStyle"
+            android:textSize="@dimen/_10font_mdp"
+            app:drawableTint="@color/yellowTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="جومونگ" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:drawableStart="@drawable/baseline_time"
+            android:drawablePadding="@dimen/_3mdp"
+            android:gravity="center_vertical"
+            style="@style/TextViewLightStyle"
+            android:textSize="@dimen/_9font_mdp"
+            app:drawableTint="@color/yellowTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="جومونگ" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:drawableStart="@drawable/baseline_eye"
+            android:drawablePadding="@dimen/_3mdp"
+            android:gravity="center_vertical"
+            style="@style/TextViewLightStyle"
+            android:textSize="@dimen/_9font_mdp"
+            app:drawableTint="@color/yellowTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtDuration"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="جومونگ" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

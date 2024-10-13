@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white2"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/movieCard"
+            android:layout_width="@dimen/_120mdp"
+            android:layout_height="@dimen/_150mdp"
+            android:layout_margin="@dimen/_8mdp"
+            app:cardCornerRadius="@dimen/_10mdp"
+            app:cardElevation="@dimen/_3mdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <!--Poster-->
+            <ImageView
+                android:id="@+id/item_movie_img"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Title-->
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15mdp"
+            app:drawableEndCompat="@drawable/baseline_movies"
+            app:drawableTint="@color/yellowTheme"
+            android:drawablePadding="@dimen/_3mdp"
+            app:layout_constraintEnd_toStartOf="@+id/movieCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="جومونگ"
+            android:textStyle="bold"
+            style="@style/TextViewLightStyle"
+            />
+
+        <!--Duration-->
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10mdp"
+            app:drawableEndCompat="@drawable/baseline_time"
+            app:drawableTint="@color/yellowTheme"
+            android:drawablePadding="@dimen/_3mdp"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle"
+            tools:text="2:31"
+            android:textDirection="rtl"
+            style="@style/TextViewLightStyle"
+            />
+
+        <!--Category-->
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10mdp"
+            app:drawableEndCompat="@drawable/baseline_movie_24"
+            app:drawableTint="@color/yellowTheme"
+            android:drawablePadding="@dimen/_3mdp"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtDuration"
+            tools:text="ورزشی"
+            android:textDirection="rtl"
+            style="@style/TextViewLightStyle"
+           />
+
+        <!--Views-->
+        <TextView
+            android:id="@+id/txtViews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10mdp"
+            app:drawableEndCompat="@drawable/baseline_eye"
+            app:drawableTint="@color/yellowTheme"
+            android:drawablePadding="@dimen/_3mdp"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtCategory"
+            tools:text="22"
+            android:textDirection="rtl"
+            style="@style/TextViewLightStyle" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Line-->
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1mdp"
+        android:layout_margin="@dimen/_5mdp"
+        android:background="@color/shimmerColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/consMovie" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

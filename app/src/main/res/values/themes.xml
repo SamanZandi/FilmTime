@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Filimo_MVVM" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/yellowTheme</item>
+        <!--<item name="android:statusBarColor">@color/cardview_shadow_start_color</item>-->
+    </style>
+
+    <style name="Theme.Filimo_MVVM" parent="Base.Theme.Filimo_MVVM" />
+
+    <!--TextInputLayout-->
+    <style name="CustomFilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="hintTextColor">@color/yellowTheme</item>
+        <item name="boxStrokeColor">@color/yellowTheme</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="endIconTint">@color/chineseBlack</item>
+    </style>
+
+    <!--TextView-->
+    <style name="TextViewLightStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gunmetal</item>
+        <item name="android:textSize">@dimen/_10font_mdp</item>
+    </style>
+
+
+</resources>
