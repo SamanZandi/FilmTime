@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteSmoke"
+    tools:context=".ui.detail.DetailFragment">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/consDetailsMotion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layoutDescription="@xml/fragment_detail_scene">
+
+
+        <!--Toolbar-->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellowTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--Movie Title-->
+                <TextView
+                    android:id="@+id/appTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12font_mdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="جومونگ" />
+                <!--Back-->
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+        <!--Cons Poster-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consPoster"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250mdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <!--Cover-->
+            <ImageView
+                android:id="@+id/imgPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.7"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+            <!--Shadow-->
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_white_shadow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/consPoster" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--Info Cons-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/mines30mdp"
+            app:cardBackgroundColor="@color/whiteSmoke"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/consPoster">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/infoCons"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--Title-->
+                    <TextView
+                        android:id="@+id/movieTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_15mdp"
+                        android:gravity="center"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="@dimen/_12font_mdp"
+                        app:fontPath="fonts/boldsans.ttf"
+                        app:layout_constraintBottom_toBottomOf="@+id/btnBookmark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/btnBookmark"
+                        tools:text="جومونگ" />
+
+
+                    <!--Category-->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_60mdp"
+                        android:layout_margin="@dimen/_15mdp"
+                        app:cardBackgroundColor="@color/white2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.578"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/movieTitle" />
+                    <!--Category-->
+                    <TextView
+                        android:id="@+id/txtCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableTint="@color/caribbean_green"
+                        app:drawableTopCompat="@drawable/baseline_movie_24"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/cardInfo"
+                        app:layout_constraintEnd_toStartOf="@+id/txtDuration"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cardInfo"
+                        tools:text="تاریخی" />
+
+                    <!--Duration-->
+
+                    <TextView
+                        android:id="@+id/txtDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableTint="@color/cyan"
+                        app:drawableTopCompat="@drawable/baseline_time"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/cardInfo"
+                        app:layout_constraintEnd_toStartOf="@+id/txtView"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/txtCategory"
+                        app:layout_constraintTop_toTopOf="@+id/cardInfo"
+                        tools:text="تاریخی" />
+
+                    <!--View-->
+                    <TextView
+                        android:id="@+id/txtView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/gunmetal"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableTint="@color/scarlet"
+                        app:drawableTopCompat="@drawable/baseline_eye"
+
+                        app:layout_constraintBottom_toBottomOf="@+id/cardInfo"
+                        app:layout_constraintEnd_toEndOf="@+id/cardInfo"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/txtDuration"
+                        app:layout_constraintTop_toTopOf="@+id/cardInfo"
+                        tools:text="تاریخی" />
+
+                    <!--Favorite Img-->
+                    <ImageView
+                        android:id="@+id/btnBookmark"
+                        android:layout_width="@dimen/_32mdp"
+                        android:layout_height="@dimen/_30mdp"
+
+                        android:layout_margin="@dimen/_15mdp"
+                        android:src="@drawable/baseline_bookmark_border_24"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/yellowTheme" />
+
+                    <!--Summary-->
+                    <TextView
+                        android:id="@+id/storySummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:text="@string/summary"
+                        android:textColor="@color/raisinBlack"
+                        android:textSize="@dimen/_11font_mdp"
+                        app:layout_constraintEnd_toEndOf="@+id/cardInfo"
+                        app:layout_constraintTop_toBottomOf="@id/cardInfo" />
+                    <!--Desc-->
+                    <TextView
+                        android:id="@+id/txtDescMovie"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_9mdp"
+                        android:textColor="@color/dark_gunmetal_alpha"
+                        android:textSize="@dimen/_11font_mdp"
+                        app:layout_constraintEnd_toEndOf="@+id/storySummary"
+                        app:layout_constraintStart_toStartOf="@+id/btnBookmark"
+                        app:layout_constraintTop_toBottomOf="@id/storySummary"
+                        tools:text="@string/summary" />
+
+                    <!--Related-->
+                    <TextView
+                        android:id="@+id/related"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:text="@string/relatedMovies"
+                        android:textColor="@color/raisinBlack"
+                        android:textSize="@dimen/_11font_mdp"
+                        app:layout_constraintEnd_toEndOf="@+id/cardInfo"
+                        app:layout_constraintTop_toBottomOf="@id/txtDescMovie" />
+
+                    <!--Related List-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/relatedList"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10mdp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="@+id/movieTitle"
+                        app:layout_constraintStart_toStartOf="@+id/btnBookmark"
+                        app:layout_constraintTop_toBottomOf="@id/related" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <!--Loading-->
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/yellowTheme"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
