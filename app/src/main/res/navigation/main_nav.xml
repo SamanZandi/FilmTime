@@ -7,7 +7,11 @@
 
     <action
         android:id="@+id/actionToHome"
-        app:destination="@id/homeFragment" />
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.zandroid.filimo_mvvm.ui.splash.SplashFragment"
@@ -18,7 +22,11 @@
 
     <action
         android:id="@+id/actionToRegister"
-        app:destination="@id/registerFragment" />
+        app:destination="@id/registerFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.zandroid.filimo_mvvm.ui.register.RegisterFragment"
@@ -31,13 +39,23 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/actionHomeToAllMovies"
-            app:destination="@id/allMoviesFragment" />
+            app:destination="@id/allMoviesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <argument
+            android:name="isUpdated"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/allMoviesFragment"
         android:name="com.zandroid.filimo_mvvm.ui.home.AllMoviesFragment"
         android:label="fragment_all_movies"
-        tools:layout="@layout/fragment_all_movies" />
+        tools:layout="@layout/fragment_all_movies" >
+
+    </fragment>
 
 
     <fragment
@@ -49,9 +67,42 @@
         android:id="@+id/actionToCategory"
         app:destination="@id/categoryFragment" />
 
-    <dialog
+    <fragment
         android:id="@+id/categoryFragment"
         android:name="com.zandroid.filimo_mvvm.ui.category.CategoryFragment"
         android:label="fragment_category"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/actionCategoryToMovieCategory"
+            app:destination="@id/movieByCategoryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieByCategoryFragment"
+        android:name="com.zandroid.filimo_mvvm.ui.category.MovieByCategoryFragment"
+        android:label="fragment_movie_by_category"
+        tools:layout="@layout/fragment_movie_by_category" >
+        <argument
+            android:name="catId"
+            app:argType="integer" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/actionToDetail"
+        app:destination="@id/detailFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.zandroid.filimo_mvvm.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

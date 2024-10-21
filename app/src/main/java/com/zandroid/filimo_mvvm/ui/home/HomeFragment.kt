@@ -15,6 +15,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
@@ -36,12 +37,14 @@ import com.zandroid.filimo_mvvm.utils.NetworkRequest
 import com.zandroid.filimo_mvvm.utils.REPEAT_TIME
 import com.zandroid.filimo_mvvm.utils.onceObserve
 import com.zandroid.filimo_mvvm.utils.setupRecyclerview
+import com.zandroid.filimo_mvvm.utils.setupShimmer
 import com.zandroid.filimo_mvvm.utils.showSnackBar
 import com.zandroid.filimo_mvvm.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.truncate
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -58,6 +61,7 @@ class HomeFragment : Fragment() {
     //Other
     private val viewModel:HomeViewModel by viewModels()
     private var autoScrollIndex=0
+
 
 
     override fun onCreateView(
@@ -77,9 +81,8 @@ class HomeFragment : Fragment() {
         loadSliderData()
         loadAllMoviesData()
 
+
         binding.apply {
-
-
             //set actionBar
             (activity as AppCompatActivity).setSupportActionBar(toolbar)
             //motion
@@ -106,10 +109,10 @@ class HomeFragment : Fragment() {
         viewModel.latestLiveData.observe(viewLifecycleOwner){response->
             when(response){
                 is NetworkRequest.Loading->{
-                    setupShimmer(true,binding.bannerShimmer)
+                    binding.bannerShimmer.setupShimmer(true)
                 }
                 is NetworkRequest.Success->{
-                    setupShimmer(false,binding.bannerShimmer)
+                    binding.bannerShimmer.setupShimmer(false)
                     response.data?.let {movie->
                         if (movie.aLLINONEVIDEO!!.isNotEmpty()){
                             sliderAdapter.setData(movie.aLLINONEVIDEO)
@@ -118,7 +121,7 @@ class HomeFragment : Fragment() {
                     }
                 }
                 is NetworkRequest.Error->{
-                    setupShimmer(false,binding.bannerShimmer)
+                    binding.bannerShimmer.setupShimmer(false)
                     binding.root.showSnackBar(response.message!!,ContextCompat.getColor(requireContext(),R.color.philippineSilver))
                 }
             }
@@ -132,7 +135,7 @@ class HomeFragment : Fragment() {
         viewModel.readLatestMoviesFromDb.onceObserve(viewLifecycleOwner) { database ->
             if (database.isNotEmpty()) {
                 database[0].responseMovie.aLLINONEVIDEO?.let { result ->
-                    setupShimmer(false, binding.bannerShimmer)
+                    binding.bannerShimmer.setupShimmer(false)
                     sliderAdapter.setData(result)
                     setupAutoScrollSlider(result)
                 }
@@ -150,7 +153,7 @@ class HomeFragment : Fragment() {
         }
         //click
         sliderAdapter.setOnItemClickListener {
-
+            goToDetail(it)
         }
     }
 
@@ -176,12 +179,11 @@ class HomeFragment : Fragment() {
         viewModel.allMovieData.observe(viewLifecycleOwner){response->
             when(response){
                 is NetworkRequest.Loading->{
-                    setupShimmer(true,binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(true)
                 }
                 is NetworkRequest.Success->{
-                    setupShimmer(false,binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(false)
                     response.data?.let {movie->
-
                         if (movie.aLLINONEVIDEO!!.isNotEmpty()){
                             allMoviesAdapter.setData(movie.aLLINONEVIDEO)
                             initAllMoviesRecycler()
@@ -189,7 +191,7 @@ class HomeFragment : Fragment() {
                     }
                 }
                 is NetworkRequest.Error->{
-                  setupShimmer(false,binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(false)
                     binding.root.showSnackBar(response.message!!,ContextCompat.getColor(requireContext(),R.color.philippineSilver))
                 }
             }
@@ -197,10 +199,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadAllMoviesData(){
+
         viewModel.readAllMoviesFromDb.onceObserve(viewLifecycleOwner){db->
-            if (db.isNotEmpty() && db.size>1){
+            if (db.isNotEmpty() && db.size>1 ){
                 db[1].responseMovie.aLLINONEVIDEO?.let {
-                    setupShimmer(false, binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(false)
                     allMoviesAdapter.setData(it)
                     initAllMoviesRecycler()
                     Log.e( "loadAllMoviesData: ", "$it")
@@ -218,20 +221,15 @@ class HomeFragment : Fragment() {
         }
         //click
         allMoviesAdapter.setOnItemClickListener {
-
+                goToDetail(it)
         }
     }
 
-    //shimmer
-    private fun setupShimmer(isShownLoading: Boolean, shimmer: ShimmerFrameLayout) {
-        shimmer.apply {
-            if (isShownLoading) {
-                startShimmer()
-            } else{
-            stopShimmer()
-        }
-        }
+    private fun goToDetail(id:Int){
+        val direction=HomeFragmentDirections.actionToDetail(id)
+        findNavController().navigate(direction)
     }
+
 
 
 

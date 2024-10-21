@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.snackbar.Snackbar
 
 //SnackBar
@@ -65,5 +66,28 @@ fun <T> LiveData<T>.onceObserve(owner: LifecycleOwner, observe: Observer<T>) {
 }
 
 
+//shimmer
+fun ShimmerFrameLayout.setupShimmer(isShownLoading: Boolean) {
+    this.apply {
+        if (isShownLoading) {
+            startShimmer()
+            this.isVisible=true
+        } else{
+            stopShimmer()
+            this.isVisible=false
 
+        }
+    }
+}
+
+
+fun View.isVisible(isShownLoading: Boolean, container: View) {
+    if (isShownLoading) {
+        this.isVisible = true
+        container.isVisible = false
+    } else {
+        this.isVisible = false
+        container.isVisible = true
+    }
+}
 

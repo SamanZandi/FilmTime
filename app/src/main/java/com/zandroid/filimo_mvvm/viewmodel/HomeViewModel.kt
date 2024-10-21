@@ -9,6 +9,7 @@ import com.zandroid.filimo_mvvm.data.models.home.ResponseMovie
 import com.zandroid.filimo_mvvm.data.models.register.ResponseRegister
 import com.zandroid.filimo_mvvm.data.repository.HomeRepository
 import com.zandroid.filimo_mvvm.data.repository.RegisterRepository
+import com.zandroid.filimo_mvvm.utils.ANIMATION
 import com.zandroid.filimo_mvvm.utils.NetworkRequest
 import com.zandroid.filimo_mvvm.utils.NetworkResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -72,5 +73,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository):
         val entity=MovieEntity(1,response)
         saveAllMovies(entity)
     }
+
+
 
 }

@@ -4,8 +4,10 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.zandroid.filimo_mvvm.data.db.entity.CategoryEntity
 import com.zandroid.filimo_mvvm.data.db.entity.MovieEntity
 import com.zandroid.filimo_mvvm.data.models.home.ResponseMovie
+import com.zandroid.filimo_mvvm.utils.CATEGORY_TABLE_NAME
 
 import com.zandroid.filimo_mvvm.utils.MOVIE_TABLE_NAME
 import kotlinx.coroutines.flow.Flow
@@ -20,6 +22,12 @@ interface MovieDao {
     @Query("SELECT * FROM ${MOVIE_TABLE_NAME} ORDER BY ID ASC")
     fun loadMovies():Flow<List<MovieEntity>>
 
+    //Category
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun saveCategory(entity: CategoryEntity)
+
+    @Query("SELECT * FROM ${CATEGORY_TABLE_NAME} ORDER BY ID ASC")
+    fun loadCategories():Flow<List<CategoryEntity>>
 
 
 }

@@ -18,4 +18,5 @@
     <color name="dark_gunmetal">#1F1D36</color>
     <color name="dark_gunmetal_alpha">#801F1D36</color>
     <color name="shimmerColor">#D1D1D1</color>
+    <color name="cyan">#2196F3</color>
 </resources>

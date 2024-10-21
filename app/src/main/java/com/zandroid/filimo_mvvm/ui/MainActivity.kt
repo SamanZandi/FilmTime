@@ -31,6 +31,8 @@ class MainActivity : BaseActivity() {
             when(destination.id){
                 R.id.splashFragment->visibility(false)
                 R.id.allMoviesFragment->visibility(false)
+                R.id.registerFragment->visibility(false)
+                R.id.detailFragment->visibility(false)
                 else->visibility(true)
 
             }

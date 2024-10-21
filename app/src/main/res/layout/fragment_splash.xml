@@ -27,6 +27,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Title App-->
+    <TextView
+        android:id="@+id/titleApp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20mdp"
+        android:textSize="@dimen/_14font_mdp"
+        android:textColor="@color/gunmetal"
+        android:text="@string/app_name"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10mdp"
+        app:layout_constraintTop_toBottomOf="@id/imgMovie"
+        app:layout_constraintEnd_toEndOf="@id/imgMovie"
+        app:layout_constraintStart_toStartOf="@id/imgMovie"
+        />
+
     <!--Version-->
     <TextView
         android:id="@+id/versionTxt"
@@ -34,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_20mdp"
         android:textSize="@dimen/_10font_mdp"
+        android:textColor="@color/gunmetal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
