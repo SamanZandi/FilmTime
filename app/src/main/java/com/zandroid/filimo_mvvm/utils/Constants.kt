@@ -19,7 +19,7 @@ const val ANIMATION="انیمیشن"
 const val MOVIE_DB_NAME="movie_db_name"
 const val MOVIE_TABLE_NAME="movie_table_name"
 const val CATEGORY_TABLE_NAME="category_table_name"
-
+const val DETAIL_TABLE_NAME="detail_table_name"
 
 //Other
 const val REPEAT_TIME = 100

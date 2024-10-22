@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class ResponseSingleMovie(
     @SerializedName("ALL_IN_ONE_VIDEO")
-    val aLLINONEVIDEO: List<ALLINONEVIDEO>?
+    val aLLINONEVIDEO: List<ALLINONEVIDEO>,
+
 ) {
     data class ALLINONEVIDEO(
         @SerializedName("cat_id")
@@ -39,7 +40,9 @@ data class ResponseSingleMovie(
         @SerializedName("video_url")
         val videoUrl: String?
     ) {
+
         data class Related(
+            val related: List<Related>,
             @SerializedName("cat_id")
             val catId: String?,
             @SerializedName("category_name")

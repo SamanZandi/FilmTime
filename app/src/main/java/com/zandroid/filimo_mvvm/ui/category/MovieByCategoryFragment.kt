@@ -24,6 +24,7 @@ import com.zandroid.filimo_mvvm.adapters.MoviesAdapter
 import com.zandroid.filimo_mvvm.data.models.category.ResponseCategory
 import com.zandroid.filimo_mvvm.databinding.FragmentCategoryBinding
 import com.zandroid.filimo_mvvm.databinding.FragmentMovieByCategoryBinding
+import com.zandroid.filimo_mvvm.ui.detail.DetailFragmentDirections
 import com.zandroid.filimo_mvvm.utils.NetworkChecker
 import com.zandroid.filimo_mvvm.utils.NetworkRequest
 import com.zandroid.filimo_mvvm.utils.onceObserve
@@ -144,10 +145,15 @@ class MovieByCategoryFragment : Fragment() {
         }
         //click
         allMoviesAdapter.setOnItemClickListener {
-
+            goToDetail(it)
         }
     }
 
+
+    private fun goToDetail(id: Int) {
+        val direction = MovieByCategoryFragmentDirections.actionToDetail(id)
+        findNavController().navigate(direction)
+    }
 
 
 

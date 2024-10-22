@@ -10,29 +10,37 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import coil.request.CachePolicy
 import com.zandroid.filimo_mvvm.R
-import com.zandroid.filimo_mvvm.databinding.FragmentCategoryBinding
+import com.zandroid.filimo_mvvm.adapters.MoviesAdapter
+import com.zandroid.filimo_mvvm.adapters.RelatedAdapter
+import com.zandroid.filimo_mvvm.data.models.detail.ResponseSingleMovie
 import com.zandroid.filimo_mvvm.databinding.FragmentDetailBinding
 import com.zandroid.filimo_mvvm.utils.NetworkRequest
 import com.zandroid.filimo_mvvm.utils.isVisible
 import com.zandroid.filimo_mvvm.utils.secToMin
+import com.zandroid.filimo_mvvm.utils.setupRecyclerview
+import com.zandroid.filimo_mvvm.utils.setupShimmer
 import com.zandroid.filimo_mvvm.viewmodel.DetailViewModel
-import com.zandroid.filimo_mvvm.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
     //Binding
-    private var _binding:FragmentDetailBinding? = null
+    private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var relatedAdapter: RelatedAdapter
 
     //Other
     private val viewModel: DetailViewModel by viewModels()
-    private val args : DetailFragmentArgs by navArgs()
-    private var movieId=0
+    private val args: DetailFragmentArgs by navArgs()
+    private var movieId = 0
 
 
     override fun onCreateView(
@@ -46,22 +54,22 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //get data
-        movieId=args.id
-        if (movieId>0){
+        movieId = args.id
+        if (movieId > 0) {
             callDetailApi()
         }
 
         binding.apply {
             //back
             btnBack.setOnClickListener {
-                findNavController().popBackStack(R.id.detailFragment,true)
+                findNavController().popBackStack(R.id.detailFragment, true)
                 findNavController().navigate(R.id.homeFragment)
             }
             //motion
             scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-                if (scrollY>0){
+                if (scrollY > 0) {
                     consDetailsMotion.transitionToEnd()
-                }else{
+                } else {
                     consDetailsMotion.transitionToStart()
                 }
             }
@@ -70,41 +78,55 @@ class DetailFragment : Fragment() {
     }
 
 
-
     @SuppressLint("SetTextI18n")
-    private fun callDetailApi(){
+    private fun callDetailApi() {
         viewModel.loadDetailsMovie(movieId)
         binding.apply {
-            viewModel.detailLiveData.observe(viewLifecycleOwner){response->
-                when(response){
-                    is NetworkRequest.Loading->{
-                        progress.isVisible(true,consDetailsMotion)
+            viewModel.detailLiveData.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is NetworkRequest.Loading -> {
+                        progress.isVisible(true, consDetailsMotion)
                     }
-                    is NetworkRequest.Success->{
-                        progress.isVisible(false,consDetailsMotion)
-                        response.data?.let {data->
-                            val movie=data.aLLINONEVIDEO?.get(0)!!
+
+                    is NetworkRequest.Success -> {
+                        progress.isVisible(false, consDetailsMotion)
+                        response.data?.let { data ->
+                            val movie = data.aLLINONEVIDEO.get(0)
                             //text
-                            appTitle.text= movie.videoTitle
-                            movieTitle.text= movie.videoTitle
-                            val htmlFormatter=HtmlCompat.fromHtml(movie.videoDescription!!,HtmlCompat.FROM_HTML_MODE_COMPACT)
-                            txtDescMovie.text=htmlFormatter
-                            txtCategory.text=movie.categoryName
-                            txtDuration.text=movie.videoDuration!!.secToMin()
-                            txtView.text="${movie.totelViewer} بازدید"
+                            appTitle.text = movie.videoTitle
+                            movieTitle.text = movie.videoTitle
+                            val htmlFormatter = HtmlCompat.fromHtml(
+                                movie.videoDescription!!,
+                                HtmlCompat.FROM_HTML_MODE_COMPACT
+                            )
+                            txtDescMovie.text = htmlFormatter
+                            txtCategory.text = movie.categoryName
+                            txtDuration.text = movie.videoDuration!!.secToMin()
+                            txtView.text = "${movie.totelViewer} بازدید"
                             //Image
-                            imgPoster.load(movie.videoThumbnailB){
+                            imgPoster.load(movie.videoThumbnailB) {
                                 crossfade(true)
                                 crossfade(500)
                                 memoryCachePolicy(CachePolicy.ENABLED)
                                 error(R.drawable.ic_placeholder)
                             }
-
+                            //Related
+                            relatedAdapter.setData(movie.related!!.filterNotNull())
+                            relatedList.setupRecyclerview(
+                                LinearLayoutManager
+                                    (requireContext(), LinearLayoutManager.HORIZONTAL, false),
+                                relatedAdapter
+                            )
+                            //click
+                            relatedAdapter.setOnItemClickListener {
+                                goToDetail(it)
+                            }
 
                         }
                     }
-                    is NetworkRequest.Error->{
-                        progress.isVisible(false,consDetailsMotion)
+
+                    is NetworkRequest.Error -> {
+                        progress.isVisible(false, consDetailsMotion)
                     }
                 }
 
@@ -114,12 +136,17 @@ class DetailFragment : Fragment() {
     }
 
 
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+    private fun goToDetail(id: Int) {
+        val direction = DetailFragmentDirections.actionToDetail(id)
+        findNavController().navigate(direction)
     }
+
+
+        override fun onDestroy() {
+            super.onDestroy()
+            _binding = null
+        }
+
 
 
 }

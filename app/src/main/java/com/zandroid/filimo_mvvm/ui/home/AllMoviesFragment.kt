@@ -19,6 +19,7 @@ import com.zandroid.filimo_mvvm.databinding.FragmentHomeBinding
 import com.zandroid.filimo_mvvm.utils.NetworkRequest
 import com.zandroid.filimo_mvvm.utils.onceObserve
 import com.zandroid.filimo_mvvm.utils.setupRecyclerview
+import com.zandroid.filimo_mvvm.utils.setupShimmer
 import com.zandroid.filimo_mvvm.utils.showSnackBar
 import com.zandroid.filimo_mvvm.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,10 +66,10 @@ class AllMoviesFragment : Fragment() {
         viewModel.allMovieData.observe(viewLifecycleOwner){response->
             when(response){
                 is NetworkRequest.Loading->{
-                    setupShimmer(true,binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(true)
                 }
                 is NetworkRequest.Success->{
-                    setupShimmer(false,binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(false)
                     response.data?.let {movie->
                         if (movie.aLLINONEVIDEO!!.isNotEmpty()){
                             allMoviesAdapter.setData(movie.aLLINONEVIDEO)
@@ -76,7 +77,7 @@ class AllMoviesFragment : Fragment() {
                     }
                 }
                 is NetworkRequest.Error->{
-                    setupShimmer(false,binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(false)
                     binding.root.showSnackBar(response.message!!,
                         ContextCompat.getColor(requireContext(),R.color.philippineSilver))
                 }
@@ -89,7 +90,7 @@ class AllMoviesFragment : Fragment() {
         viewModel.readAllMoviesFromDb.onceObserve(viewLifecycleOwner){db->
             if (db.isNotEmpty() && db.size>1){
                 db[1].responseMovie.aLLINONEVIDEO?.let {
-                    setupShimmer(false, binding.allMoviesShimmer)
+                    binding.allMoviesShimmer.setupShimmer(false)
                     allMoviesAdapter.setData(it)
 
                     Log.e( "loadAllMoviesData: ", "$it")
@@ -108,19 +109,13 @@ class AllMoviesFragment : Fragment() {
         }
         //click
         allMoviesAdapter.setOnItemClickListener {
-
+            goToDetail(it)
         }
     }
 
-    //shimmer
-    private fun setupShimmer(isShownLoading: Boolean, shimmer: ShimmerFrameLayout) {
-        shimmer.apply {
-            if (isShownLoading) {
-                startShimmer()
-            } else{
-                stopShimmer()
-            }
-        }
+    private fun goToDetail(id: Int) {
+        val direction = AllMoviesFragmentDirections.actionToDetail(id)
+        findNavController().navigate(direction)
     }
 
     override fun onDestroy() {

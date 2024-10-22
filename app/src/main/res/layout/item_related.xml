@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardRelated"
+        android:layout_width="@dimen/_120mdp"
+        android:layout_height="@dimen/_150mdp"
+        android:layout_marginStart="@dimen/_10mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_8mdp">
+
+        <ImageView
+            android:id="@+id/imgRelated"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/txtRelatedMovie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5mdp"
+        app:layout_constraintEnd_toEndOf="@+id/cardRelated"
+        app:layout_constraintStart_toStartOf="@+id/cardRelated"
+        app:layout_constraintTop_toBottomOf="@id/cardRelated"
+        tools:text="جومونگ"
+        android:maxLines="1"
+        android:ellipsize="start"
+        android:textColor="@color/dark_gunmetal_alpha"
+        android:textSize="@dimen/_9font_mdp"
+        android:gravity="center"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

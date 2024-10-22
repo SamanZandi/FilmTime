@@ -239,6 +239,8 @@
                         app:layout_constraintEnd_toEndOf="@+id/cardInfo"
                         app:layout_constraintTop_toBottomOf="@id/txtDescMovie" />
 
+
+
                     <!--Related List-->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/relatedList"
@@ -246,6 +248,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10mdp"
                         android:orientation="horizontal"
+                        android:clipToPadding="false"
+                        android:fadingEdge="horizontal"
+                        android:fadeScrollbars="true"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="@+id/movieTitle"
                         app:layout_constraintStart_toStartOf="@+id/btnBookmark"
