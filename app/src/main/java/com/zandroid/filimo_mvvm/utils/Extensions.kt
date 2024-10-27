@@ -1,6 +1,9 @@
 package com.zandroid.filimo_mvvm.utils
 
+import android.content.res.ColorStateList
 import android.view.View
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
@@ -13,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 //SnackBar
 fun View.showSnackBar(message:String, color:Int){
     val snackbar= this.let { Snackbar.make(it,message, Snackbar.LENGTH_SHORT) }
-    snackbar.setBackgroundTint(color)
+    snackbar.setBackgroundTint(ContextCompat.getColor(context,color))
     snackbar.show()
 }
 
@@ -89,5 +92,9 @@ fun View.isVisible(isShownLoading: Boolean, container: View) {
         this.isVisible = false
         container.isVisible = true
     }
+}
+
+fun ImageView.setTint(color:Int){
+    imageTintList= ColorStateList.valueOf(ContextCompat.getColor(context,color))
 }
 

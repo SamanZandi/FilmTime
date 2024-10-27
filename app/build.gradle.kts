@@ -98,4 +98,9 @@ dependencies {
     implementation ("com.github.MrNouri:DynamicSizes:1.0")
     implementation ("kr.co.prnd:readmore-textview:1.0.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //ExoPlayer
+    implementation("androidx.media3:media3-exoplayer:1.3.1")
+    implementation("androidx.media3:media3-exoplayer-dash:1.3.1")
+    implementation("androidx.media3:media3-ui:1.3.1")
 }

@@ -20,7 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <!--App title-->
             <TextView
                 android:id="@+id/appTitle"
                 android:layout_width="wrap_content"
@@ -33,6 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <!--Search-->
             <ImageView
                 android:id="@+id/btnSearch"
                 android:layout_width="wrap_content"

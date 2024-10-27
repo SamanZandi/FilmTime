@@ -98,7 +98,9 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
-
+            btnSearch.setOnClickListener {
+                findNavController().navigate(R.id.searchFragment)
+            }
 
 
         }
@@ -122,7 +124,7 @@ class HomeFragment : Fragment() {
                 }
                 is NetworkRequest.Error->{
                     binding.bannerShimmer.setupShimmer(false)
-                    binding.root.showSnackBar(response.message!!,ContextCompat.getColor(requireContext(),R.color.philippineSilver))
+                    binding.root.showSnackBar(response.message!!,R.color.philippineSilver)
                 }
             }
         }

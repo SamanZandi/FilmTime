@@ -60,9 +60,7 @@ class RegisterFragment : Fragment() {
                             state=it.aLLINONEVIDEO?.get(0)?.success!!
                             if(state=="1"){
                                 viewModel.saveState(it.aLLINONEVIDEO.get(0)?.msg!!,state,userEmail)
-                                view.showSnackBar(
-                                    getString(R.string.success_msg),
-                                    ContextCompat.getColor(requireContext(),R.color.caribbean_green))
+                                view.showSnackBar(getString(R.string.success_msg), R.color.caribbean_green)
                                 findNavController().popBackStack(R.id.registerFragment,true)
                                 findNavController().navigate(R.id.actionToHome)
                             }
@@ -71,8 +69,7 @@ class RegisterFragment : Fragment() {
 
                     is NetworkRequest.Error -> {
                         loading.showVisibility(false,btnSubmit)
-                        root.showSnackBar( response.message!!,
-                            ContextCompat.getColor(requireContext(),R.color.philippineSilver))
+                        root.showSnackBar( response.message!!, R.color.philippineSilver)
                     }
                 }
 

@@ -4,6 +4,7 @@ import com.zandroid.filimo_mvvm.data.models.category.ResponseCategory
 import com.zandroid.filimo_mvvm.data.models.detail.ResponseSingleMovie
 import com.zandroid.filimo_mvvm.data.models.home.ResponseMovie
 import com.zandroid.filimo_mvvm.data.models.register.ResponseRegister
+import org.w3c.dom.Text
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -40,5 +41,8 @@ interface ApiServices {
 
     @GET("api.php?")
     suspend fun getMovieDetails(@Query("video_id") id:Int): Response<ResponseSingleMovie>
+
+    @GET("api.php")
+    suspend fun searchMovie(@Query("search_text") text:String): Response<ResponseMovie>
 
 }

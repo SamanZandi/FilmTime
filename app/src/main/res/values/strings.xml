@@ -22,4 +22,8 @@
     <string name="retry">تلاش مجدد</string>
     <string name="summary">خلاصه داستان</string>
     <string name="relatedMovies">پیشنهادهای مشابه</string>
+    <string name="not_found">موردی یافت نشد!</string>
+    <string name="play">تماشا کنید</string>
+    <string name="delete_from_favorite">این فیلم از لیست علاقه مندی ها حذف شد</string>
+    <string name="added_to_favorite">این فیلم وارد لیست علاقه مندی ها شد</string>
 </resources>

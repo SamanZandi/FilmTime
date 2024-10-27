@@ -56,6 +56,9 @@ class AllMoviesFragment : Fragment() {
             //Back
             btnBack.setOnClickListener { findNavController().popBackStack() }
 
+            btnSearch.setOnClickListener {
+                findNavController().navigate(R.id.searchFragment)
+            }
 
 
         }
@@ -78,8 +81,7 @@ class AllMoviesFragment : Fragment() {
                 }
                 is NetworkRequest.Error->{
                     binding.allMoviesShimmer.setupShimmer(false)
-                    binding.root.showSnackBar(response.message!!,
-                        ContextCompat.getColor(requireContext(),R.color.philippineSilver))
+                    binding.root.showSnackBar(response.message!!, R.color.philippineSilver)
                 }
             }
         }

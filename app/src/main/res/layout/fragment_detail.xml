@@ -7,6 +7,7 @@
     android:background="@color/whiteSmoke"
     tools:context=".ui.detail.DetailFragment">
 
+    <!--Content-->
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/consDetailsMotion"
         android:layout_width="match_parent"
@@ -47,6 +48,17 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/arrow_back"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/white" />
+
+                <!--Favorite Img-->
+                <ImageView
+                    android:id="@+id/btnBookmark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8mdp"
+                    android:src="@drawable/baseline_bookmark_border_24"
+                    app:layout_constraintStart_toEndOf="@+id/btnBack"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/white" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -119,9 +131,9 @@
                         android:textColor="@color/gunmetal"
                         android:textSize="@dimen/_12font_mdp"
                         app:fontPath="fonts/boldsans.ttf"
-                        app:layout_constraintBottom_toBottomOf="@+id/btnBookmark"
+                        app:layout_constraintBottom_toBottomOf="@id/btnPlay"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/btnBookmark"
+                        app:layout_constraintTop_toTopOf="@id/btnPlay"
                         tools:text="جومونگ" />
 
 
@@ -191,17 +203,24 @@
                         app:layout_constraintTop_toTopOf="@+id/cardInfo"
                         tools:text="تاریخی" />
 
-                    <!--Favorite Img-->
-                    <ImageView
-                        android:id="@+id/btnBookmark"
-                        android:layout_width="@dimen/_32mdp"
-                        android:layout_height="@dimen/_30mdp"
 
-                        android:layout_margin="@dimen/_15mdp"
-                        android:src="@drawable/baseline_bookmark_border_24"
+                    <!--Play Movie-->
+                    <TextView
+                        android:id="@+id/btnPlay"
+                        android:layout_width="@dimen/_70mdp"
+                        android:layout_height="@dimen/_25mdp"
+                        android:layout_margin="@dimen/_8mdp"
+                        android:background="@drawable/bg_category"
+                        android:gravity="center"
+                        android:text="@string/play"
+                        android:maxLines="1"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableEndCompat="@drawable/baseline_play_arrow_24"
+                        app:drawableTint="@color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/cardInfo"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/yellowTheme" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <!--Summary-->
                     <TextView
@@ -223,7 +242,7 @@
                         android:textColor="@color/dark_gunmetal_alpha"
                         android:textSize="@dimen/_11font_mdp"
                         app:layout_constraintEnd_toEndOf="@+id/storySummary"
-                        app:layout_constraintStart_toStartOf="@+id/btnBookmark"
+                        app:layout_constraintStart_toStartOf="@+id/btnPlay"
                         app:layout_constraintTop_toBottomOf="@id/storySummary"
                         tools:text="@string/summary" />
 
@@ -253,7 +272,7 @@
                         android:fadeScrollbars="true"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="@+id/movieTitle"
-                        app:layout_constraintStart_toStartOf="@+id/btnBookmark"
+                        app:layout_constraintStart_toStartOf="@+id/btnPlay"
                         app:layout_constraintTop_toBottomOf="@id/related" />
 
 
@@ -278,6 +297,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--Internet-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/internetConsLay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone">
+        <include
+            android:id="@+id/noInternet"
+            layout="@layout/no_internet"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
