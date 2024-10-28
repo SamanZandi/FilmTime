@@ -33,6 +33,7 @@ class MainActivity : BaseActivity() {
                 R.id.allMoviesFragment->visibility(false)
                 R.id.registerFragment->visibility(false)
                 R.id.detailFragment->visibility(false)
+                R.id.playerFragment->visibility(false)
                 else->visibility(true)
 
             }

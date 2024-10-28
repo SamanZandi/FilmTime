@@ -187,6 +187,11 @@ class DetailFragment : Fragment() {
            relatedAdapter.setOnItemClickListener {
                goToDetail(it)
            }
+           //go to player
+           btnPlay.setOnClickListener {
+               val direction=DetailFragmentDirections.actionToPlayer(movie.videoUrl!!,movie.videoThumbnailB!!)
+               findNavController().navigate(direction)
+           }
        }
     }
 
@@ -250,6 +255,7 @@ class DetailFragment : Fragment() {
     //Internet Layout
     private fun initInternetLayout(isConnected: Boolean) {
         binding.internetConsLay.isVisible = isConnected.not()
+        binding.consDetailsMotion.isVisible=false
     }
 
 

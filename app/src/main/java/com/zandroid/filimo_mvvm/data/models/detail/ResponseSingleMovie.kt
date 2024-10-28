@@ -1,7 +1,11 @@
 package com.zandroid.filimo_mvvm.data.models.detail
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
+
 
 data class ResponseSingleMovie(
     @SerializedName("ALL_IN_ONE_VIDEO")
@@ -18,11 +22,11 @@ data class ResponseSingleMovie(
         @SerializedName("rate_avg")
         val rateAvg: String?,
         @SerializedName("related")
-        val related: List<Related?>?,
+        val related: @RawValue List<Related>?,
         @SerializedName("totel_viewer")
         val totelViewer: String?,
         @SerializedName("user_comments")
-        val userComments: List<Any?>?,
+        val userComments: @RawValue List<Any>?,
         @SerializedName("video_description")
         val videoDescription: String?,
         @SerializedName("video_duration")
@@ -39,7 +43,7 @@ data class ResponseSingleMovie(
         val videoType: String?,
         @SerializedName("video_url")
         val videoUrl: String?
-    ) {
+    ){
 
         data class Related(
             val related: List<Related>,

@@ -104,6 +104,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionToPlayer"
+            app:destination="@id/playerFragment" />
     </fragment>
 
     <action
@@ -114,4 +117,16 @@
         android:name="com.zandroid.filimo_mvvm.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.zandroid.filimo_mvvm.ui.detail.player.PlayerFragment"
+        android:label="fragment_player"
+        tools:layout="@layout/fragment_player" >
+        <argument
+            android:name="movieUrl"
+            app:argType="string" />
+        <argument
+            android:name="moviePoster"
+            app:argType="string" />
+    </fragment>
 </navigation>
