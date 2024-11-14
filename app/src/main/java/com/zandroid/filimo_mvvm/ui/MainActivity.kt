@@ -1,6 +1,8 @@
 package com.zandroid.filimo_mvvm.ui
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -23,6 +25,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+       
         navHost=supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
         binding.bottomNav.background = null
         binding.bottomNav.setupWithNavController(navHost.navController)

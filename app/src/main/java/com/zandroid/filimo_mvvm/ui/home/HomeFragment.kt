@@ -83,8 +83,7 @@ class HomeFragment : Fragment() {
 
 
         binding.apply {
-            //set actionBar
-            (activity as AppCompatActivity).setSupportActionBar(toolbar)
+
             //motion
            scrollview.setOnScrollChangeListener { _, _, scrollY, _,_ ->
                if (scrollY>0){
@@ -178,23 +177,25 @@ class HomeFragment : Fragment() {
 
     //All Movies
     private fun callMoviesApi(){
-        viewModel.allMovieData.observe(viewLifecycleOwner){response->
-            when(response){
-                is NetworkRequest.Loading->{
-                    binding.allMoviesShimmer.setupShimmer(true)
-                }
-                is NetworkRequest.Success->{
-                    binding.allMoviesShimmer.setupShimmer(false)
-                    response.data?.let {movie->
-                        if (movie.aLLINONEVIDEO!!.isNotEmpty()){
-                            allMoviesAdapter.setData(movie.aLLINONEVIDEO)
-                            initAllMoviesRecycler()
+        binding.apply {
+            viewModel.allMovieData.observe(viewLifecycleOwner){response->
+                when(response){
+                    is NetworkRequest.Loading->{
+                       allMoviesShimmer.setupShimmer(true)
+                    }
+                    is NetworkRequest.Success->{
+                       allMoviesShimmer.setupShimmer(false)
+                        response.data?.let {movie->
+                            if (movie.aLLINONEVIDEO!!.isNotEmpty()){
+                                allMoviesAdapter.setData(movie.aLLINONEVIDEO)
+                                initAllMoviesRecycler()
+                            }
                         }
                     }
-                }
-                is NetworkRequest.Error->{
-                    binding.allMoviesShimmer.setupShimmer(false)
-                    binding.root.showSnackBar(response.message!!,ContextCompat.getColor(requireContext(),R.color.philippineSilver))
+                    is NetworkRequest.Error->{
+                        allMoviesShimmer.setupShimmer(false)
+                        root.showSnackBar(response.message!!,ContextCompat.getColor(requireContext(),R.color.philippineSilver))
+                    }
                 }
             }
         }
