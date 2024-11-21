@@ -93,7 +93,7 @@ dependencies {
 
     //Other
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
-   // implementation ("com.todkars:shimmer-recyclerview:0.4.1")
+  // implementation ("com.todkars:shimmer-recyclerview:0.4.1")
     implementation ("com.airbnb.android:lottie:6.5.2")
     implementation ("com.github.MrNouri:DynamicSizes:1.0")
     implementation ("kr.co.prnd:readmore-textview:1.0.0")

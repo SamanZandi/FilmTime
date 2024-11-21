@@ -1,7 +1,10 @@
 package com.zandroid.filimo_mvvm.ui.detail
 
+import android.R.attr.scrollY
 import android.annotation.SuppressLint
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -78,14 +81,19 @@ class DetailFragment : Fragment() {
                 findNavController().popBackStack(R.id.detailFragment, true)
                 findNavController().navigate(R.id.homeFragment)
             }
+
             //motion
-            scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-                if (scrollY > 0) {
+            scrollView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+                if (oldScrollY>scrollY) {
                     consDetailsMotion.transitionToEnd()
-                } else {
+                }else {
                     consDetailsMotion.transitionToStart()
                 }
+
+                 Log.e("scrollY: ", "$scrollY")
             }
+
+
         }
 
         //check Internet
