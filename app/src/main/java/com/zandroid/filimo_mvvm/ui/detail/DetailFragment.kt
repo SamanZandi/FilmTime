@@ -154,7 +154,7 @@ class DetailFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun initDetailsViews(data: ResponseSingleMovie){
         val movie=data.aLLINONEVIDEO.get(0)
-       binding.apply {
+       binding.apply  {
            //check favorite
            checkExistInFavorite(movie.id!!.toInt())
            btnBookmark.setOnClickListener {
