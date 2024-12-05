@@ -5,7 +5,6 @@ This is a video player app using Kotlin and MVVM design pattern.
 | Register | Home|
 | --- | ---|
 |![Register](https://github.com/user-attachments/assets/c7c347d6-21be-4672-820b-2c10a3e52389) | ![Home Page](https://github.com/user-attachments/assets/278f2b96-c479-4d57-b1b7-0ab2fcf0a14b)|
-| --- | ---|
 
 | Best Movies | Favorites|
 | --- | ---|
